@@ -21,36 +21,36 @@ export function CaseTable({ title, filterStatus }: { title: string, filterStatus
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
+        const fetchCases = async () => {
+            try {
+                let query = supabase
+                    .from('cases')
+                    .select(`
+                        *,
+                        clients (name),
+                        lawyers (name)
+                    `)
+                    .order('created_at', { ascending: false });
+
+                if (filterStatus) {
+                    query = query.eq('status', filterStatus);
+                }
+
+                const { data, error } = await query;
+
+                if (error) throw error;
+
+                setCases(data || []);
+            } catch (error) {
+                console.error('Error fetching cases:', error);
+                toast.error('Failed to fetch cases');
+            } finally {
+                setLoading(false);
+            }
+        };
+
         fetchCases();
     }, [filterStatus]);
-
-    const fetchCases = async () => {
-        try {
-            let query = supabase
-                .from('cases')
-                .select(`
-                    *,
-                    clients (name),
-                    lawyers (name)
-                `)
-                .order('created_at', { ascending: false });
-
-            if (filterStatus) {
-                query = query.eq('status', filterStatus);
-            }
-
-            const { data, error } = await query;
-
-            if (error) throw error;
-
-            setCases(data || []);
-        } catch (error) {
-            console.error('Error fetching cases:', error);
-            toast.error('Failed to fetch cases');
-        } finally {
-            setLoading(false);
-        }
-    };
 
     if (loading) {
         return <div className="p-6 text-center text-slate-500">Loading cases...</div>;

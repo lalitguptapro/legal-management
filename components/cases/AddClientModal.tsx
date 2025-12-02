@@ -7,7 +7,7 @@ import { X, Upload } from 'lucide-react';
 interface AddClientModalProps {
     isOpen: boolean;
     onClose: () => void;
-    onClientAdded: (newClient: any) => void;
+    onClientAdded: (newClient: { id: string; name: string }) => void;
 }
 
 export function AddClientModal({ isOpen, onClose, onClientAdded }: AddClientModalProps) {
@@ -75,9 +75,9 @@ export function AddClientModal({ isOpen, onClose, onClientAdded }: AddClientModa
                 country: ''
             });
 
-        } catch (error: any) {
+        } catch (error) {
             console.error('Error adding client:', error);
-            alert('Error adding client: ' + error.message);
+            alert('Error adding client: ' + (error as Error).message);
         } finally {
             setLoading(false);
         }

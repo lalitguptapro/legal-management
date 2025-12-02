@@ -6,6 +6,7 @@ import supabase from '@/app/api/clients';
 
 export default function EditLawyerPage({ params }: { params: Promise<{ id: string }> }) {
     const { id } = use(params);
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const [lawyer, setLawyer] = useState<any>(null);
     const [loading, setLoading] = useState(true);
 

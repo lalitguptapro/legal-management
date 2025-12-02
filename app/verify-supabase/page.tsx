@@ -10,13 +10,13 @@ export default function VerifySupabase() {
     useEffect(() => {
         async function checkConnection() {
             try {
-                const { data, error } = await supabase.auth.getSession();
+                const { error } = await supabase.auth.getSession();
                 if (error) throw error;
                 setStatus('connected');
                 setMessage('Successfully connected to Supabase!');
-            } catch (e: any) {
+            } catch (e) {
                 setStatus('error');
-                setMessage(e.message || 'Failed to connect');
+                setMessage((e as Error).message || 'Failed to connect');
             }
         }
         checkConnection();

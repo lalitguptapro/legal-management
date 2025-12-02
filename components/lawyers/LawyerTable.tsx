@@ -3,7 +3,7 @@
 import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import supabase from '@/app/api/clients';
-import { Eye, Edit, Trash2, Mail, Phone, Copy, MoreHorizontal } from "lucide-react";
+import { Edit, Trash2, Mail, Phone, Copy } from "lucide-react";
 import { toast } from 'sonner';
 import { ConfirmationModal } from '@/components/ui/ConfirmationModal';
 
@@ -16,14 +16,15 @@ type Lawyer = {
     activeCases: number; // Placeholder or calculated
     lawyer_type: string;
     mobile: string;
-    [key: string]: any;
+    created_at?: string;
+
 };
 
 export function LawyerTable() {
     const router = useRouter();
     const [lawyers, setLawyers] = useState<Lawyer[]>([]);
     const [loading, setLoading] = useState(true);
-    const [activeMenu, setActiveMenu] = useState<string | null>(null);
+
 
     // Modal State
     const [modalOpen, setModalOpen] = useState(false);
@@ -106,7 +107,8 @@ export function LawyerTable() {
                 setLawyers(lawyers.filter(l => l.id !== modalConfig.data!.id));
                 toast.success('Lawyer deleted successfully');
             } else if (modalConfig.type === 'duplicate') {
-                const { id, created_at, ...lawyerData } = modalConfig.data;
+                // eslint-disable-next-line @typescript-eslint/no-unused-vars
+                const { id: _id, created_at: _created_at, ...lawyerData } = modalConfig.data;
                 const newLawyer = {
                     ...lawyerData,
                     name: `${lawyerData.name} (Copy)`
@@ -124,8 +126,8 @@ export function LawyerTable() {
                 toast.success('Lawyer duplicated successfully');
             }
             setModalOpen(false);
-        } catch (error: any) {
-            toast.error(`Error ${modalConfig.type === 'delete' ? 'deleting' : 'duplicating'} lawyer: ` + error.message);
+        } catch (error) {
+            toast.error(`Error ${modalConfig.type === 'delete' ? 'deleting' : 'duplicating'} lawyer: ` + (error as Error).message);
         } finally {
             setActionLoading(false);
         }

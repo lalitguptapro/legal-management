@@ -79,9 +79,9 @@ export function PeopleForm() {
             setPostalCode('');
             setCountry('');
 
-        } catch (error: any) {
+        } catch (error) {
             console.error('Error adding person:', error);
-            toast.error('Error adding person: ' + error.message);
+            toast.error('Error adding person: ' + (error as Error).message);
         } finally {
             setLoading(false);
         }

@@ -1,5 +1,7 @@
 import { PeopleForm } from "@/components/people/PeopleForm";
 
+export const dynamic = 'force-dynamic';
+
 export default function AddPeoplePage() {
     return (
         <div className="max-w-4xl mx-auto">

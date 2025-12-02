@@ -1,5 +1,7 @@
 import { LawyerTable } from "@/components/lawyers/LawyerTable";
 
+export const dynamic = 'force-dynamic';
+
 export default function AllLawyersPage() {
     return (
         <div className="space-y-6">

@@ -14,7 +14,7 @@ const mockPoints: CasePoint[] = [
     { id: "CP-002", title: "Precedent from 1998 Ruling", case: "State vs. Doe", addedBy: "Mike Ross", date: "2024-11-14", status: "Finalized" },
 ];
 
-export function CasePointTable({ title, filterMyPoints }: { title: string, filterMyPoints?: boolean }) {
+export function CasePointTable({ title }: { title: string }) {
     const filteredPoints = mockPoints;
 
     return (

@@ -1,5 +1,7 @@
 import { PeopleTable } from "@/components/people/PeopleTable";
 
+export const dynamic = 'force-dynamic';
+
 export default function CaseWitnessPage() {
     return (
         <div className="space-y-6">

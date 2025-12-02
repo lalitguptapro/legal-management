@@ -20,35 +20,35 @@ export function PeopleTable({ title, filterRole }: { title: string, filterRole?:
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
+        const fetchPeople = async () => {
+            try {
+                let query = supabase
+                    .from('people')
+                    .select(`
+                        *,
+                        cases (title)
+                    `)
+                    .order('created_at', { ascending: false });
+
+                if (filterRole) {
+                    query = query.eq('role', filterRole);
+                }
+
+                const { data, error } = await query;
+
+                if (error) throw error;
+
+                setPeople(data || []);
+            } catch (error) {
+                console.error('Error fetching people:', error);
+                toast.error('Failed to fetch people: ' + ((error as Error).message || 'Unknown error'));
+            } finally {
+                setLoading(false);
+            }
+        };
+
         fetchPeople();
     }, [filterRole]);
-
-    const fetchPeople = async () => {
-        try {
-            let query = supabase
-                .from('people')
-                .select(`
-                    *,
-                    cases (title)
-                `)
-                .order('created_at', { ascending: false });
-
-            if (filterRole) {
-                query = query.eq('role', filterRole);
-            }
-
-            const { data, error } = await query;
-
-            if (error) throw error;
-
-            setPeople(data || []);
-        } catch (error: any) {
-            console.error('Error fetching people:', error);
-            toast.error('Failed to fetch people: ' + (error.message || error.details || 'Unknown error'));
-        } finally {
-            setLoading(false);
-        }
-    };
 
     if (loading) {
         return <div className="p-6 text-center text-slate-500">Loading people...</div>;

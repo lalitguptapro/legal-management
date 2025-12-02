@@ -16,7 +16,7 @@ const mockDocuments: Document[] = [
     { id: "D-003", name: "Contract Draft.docx", type: "Word", case: "Tech Corp Merger", uploadedBy: "Harvey Specter", date: "2024-11-10", size: "1.2 MB" },
 ];
 
-export function DocumentTable({ title, filterMyDocs }: { title: string, filterMyDocs?: boolean }) {
+export function DocumentTable({ title }: { title: string }) {
     // In a real app, we'd filter by current user ID
     const filteredDocs = mockDocuments;
 

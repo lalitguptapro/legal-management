@@ -16,7 +16,7 @@ const mockHearings: Hearing[] = [
     { id: "H-003", case: "Tech Corp Merger", date: "2024-10-15", time: "11:00 AM", court: "Commercial Court", judge: "Hon. Robert Baratheon", status: "Completed" },
 ];
 
-export function HearingTable({ title, filterStatus, filterMyHearings }: { title: string, filterStatus?: string, filterMyHearings?: boolean }) {
+export function HearingTable({ title, filterStatus }: { title: string, filterStatus?: string }) {
     const filteredHearings = filterStatus
         ? mockHearings.filter(h => h.status === filterStatus)
         : mockHearings;

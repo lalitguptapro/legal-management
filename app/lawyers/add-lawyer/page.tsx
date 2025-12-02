@@ -1,5 +1,7 @@
 import { LawyerForm } from "@/components/lawyers/LawyerForm";
 
+export const dynamic = 'force-dynamic';
+
 export default function AddLawyerPage() {
     return (
         <div className="max-w-4xl mx-auto">

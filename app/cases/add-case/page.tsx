@@ -1,5 +1,7 @@
 import { CaseForm } from "@/components/cases/CaseForm";
 
+export const dynamic = 'force-dynamic';
+
 export default function AddCasePage() {
     return (
         <div className="max-w-4xl mx-auto">

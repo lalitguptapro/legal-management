@@ -3,7 +3,7 @@
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import supabase from '@/app/api/clients';
-import { Upload, Plus, Trash2, X } from 'lucide-react';
+import { Upload, Plus, X } from 'lucide-react';
 import { toast } from 'sonner';
 
 interface PaymentDetail {
@@ -17,7 +17,25 @@ interface PaymentDetail {
 }
 
 interface LawyerFormProps {
-    initialData?: any;
+    initialData?: {
+        id?: string;
+        name?: string;
+        gender?: string;
+        dob?: string;
+        age?: string;
+        email?: string;
+        mobile?: string;
+        address?: string;
+        city?: string;
+        state?: string;
+        postal_code?: string;
+        country?: string;
+        lawyer_type?: string;
+        case_based_bill_rate?: string;
+        time_based_bill_rate?: string;
+        monthly_bill_rate?: string;
+        payment_details?: PaymentDetail[];
+    };
     isEdit?: boolean;
 }
 
@@ -128,9 +146,9 @@ export function LawyerForm({ initialData, isEdit = false }: LawyerFormProps) {
             router.push('/lawyers/all-lawyers');
             router.refresh();
 
-        } catch (error: any) {
+        } catch (error) {
             console.error('Error saving lawyer:', error);
-            toast.error('Error saving lawyer: ' + error.message);
+            toast.error('Error saving lawyer: ' + (error as Error).message);
         } finally {
             setLoading(false);
         }

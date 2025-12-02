@@ -15,7 +15,7 @@ const mockTasks: Task[] = [
     { id: "T-003", title: "Client Meeting Prep", assignedTo: "Harvey Specter", dueDate: "2024-11-15", priority: "Low", status: "Completed" },
 ];
 
-export function TaskTable({ title, filterStatus, filterMyTasks }: { title: string, filterStatus?: string, filterMyTasks?: boolean }) {
+export function TaskTable({ title, filterStatus }: { title: string, filterStatus?: string }) {
     const filteredTasks = filterStatus
         ? mockTasks.filter(t => t.status === filterStatus)
         : mockTasks;

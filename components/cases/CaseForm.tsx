@@ -3,7 +3,7 @@
 import { useState, useEffect, useRef } from 'react';
 import { useRouter } from 'next/navigation';
 import supabase from '@/app/api/clients';
-import { Plus, Trash2, Upload, ChevronDown, Search, X, ChevronUp } from 'lucide-react';
+import { Plus, Trash2, Upload, ChevronDown, Search, ChevronUp } from 'lucide-react';
 import { AddClientModal } from './AddClientModal';
 import { toast } from 'sonner';
 
@@ -95,7 +95,7 @@ export function CaseForm() {
     const handlePersonChange = (
         index: number,
         field: keyof Person,
-        value: any,
+        value: Person[keyof Person],
         list: Person[],
         setList: (list: Person[]) => void
     ) => {
@@ -201,9 +201,9 @@ export function CaseForm() {
             toast.success('Case created successfully');
             router.push('/cases/all-cases'); // Redirect to all cases for now
 
-        } catch (error: any) {
+        } catch (error) {
             console.error('Error creating case:', error);
-            toast.error('Error creating case: ' + error.message);
+            toast.error('Error creating case: ' + (error as Error).message);
         } finally {
             setLoading(false);
         }

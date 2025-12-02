@@ -1,5 +1,7 @@
 import { CaseTable } from "@/components/cases/CaseTable";
 
+export const dynamic = 'force-dynamic';
+
 export default function AllCasesPage() {
     return (
         <div className="space-y-6">
