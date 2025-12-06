@@ -8,8 +8,8 @@ import { Toaster } from "@/components/ui/Toaster";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Legal Case Management",
-  description: "Manage your legal cases efficiently",
+  title: "Legal Management System",
+  description: "Complete legal practice management software",
 };
 
 export default function RootLayout({
@@ -19,12 +19,12 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${inter.className} bg-slate-50`}>
-        <div className="flex h-screen overflow-hidden">
+      <body className={`${inter.className} antialiased`}>
+        <div className="flex h-screen overflow-hidden bg-gray-50">
           <Sidebar />
           <div className="flex-1 flex flex-col overflow-hidden">
             <Header />
-            <main className="flex-1 overflow-y-auto p-6 bg-white">
+            <main className="flex-1 overflow-y-auto bg-gray-50">
               {children}
             </main>
           </div>

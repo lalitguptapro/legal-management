@@ -1,0 +1,12 @@
+-- Quick Reference: How to Apply This Schema
+-- 
+-- 1. Go to Supabase Dashboard: https://app.supabase.com
+-- 2. Select your project
+-- 3. Click "SQL Editor" in left sidebar
+-- 4. Click "New query"
+-- 5. Copy and paste the entire content of legal_management_schema.sql
+-- 6. Click "Run" button (or press Ctrl+Enter)
+-- 7. Verify tables were created in "Table Editor"
+--
+-- Note: This file is just a reference. Use legal_management_schema.sql for the actual schema.
+
