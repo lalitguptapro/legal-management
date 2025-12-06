@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
-import supabase from '@/app/api/clients';
+import supabase from '@/lib/supabase';
 import { Edit, Trash2, Mail, Phone, Copy } from "lucide-react";
 import { toast } from 'sonner';
 import { ConfirmationModal } from '@/components/ui/ConfirmationModal';

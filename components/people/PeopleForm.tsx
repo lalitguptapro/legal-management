@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
-import supabase from '@/app/api/clients';
+import supabase from '@/lib/supabase';
 import { Upload } from 'lucide-react';
 import { toast } from 'sonner';
 

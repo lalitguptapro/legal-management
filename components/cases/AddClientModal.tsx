@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import supabase from '@/app/api/clients';
+import supabase from '@/lib/supabase';
 import { X, Upload } from 'lucide-react';
 
 interface AddClientModalProps {

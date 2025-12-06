@@ -2,7 +2,7 @@
 
 import { useState, useEffect, useRef } from 'react';
 import { useRouter } from 'next/navigation';
-import supabase from '@/app/api/clients';
+import supabase from '@/lib/supabase';
 import { Plus, Trash2, Upload, ChevronDown, Search, ChevronUp } from 'lucide-react';
 import { AddClientModal } from './AddClientModal';
 import { toast } from 'sonner';

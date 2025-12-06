@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import supabase from '@/app/api/clients';
+import supabase from '@/lib/supabase';
 import { Eye, Edit, Trash2 } from "lucide-react";
 import { toast } from 'sonner';
 
